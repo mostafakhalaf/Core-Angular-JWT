@@ -1,0 +1,45 @@
+<div  [ngStyle]="{backgroundColor:cc}" >
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">JWT Auth System</a>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+<a [routerLink]="[ '/another']"> lazy loading</a> 
+
+<select id="colorlist" [(ngModel)]="selectedColor.id" 
+        (change)="onChange()">
+         <option *ngFor="let color of colors" 
+                value={{color.name}}> 
+               {{color.name}}
+         </option>
+    </select>
+    <td> <a [routerLink]="['/creatuser']" >create</a></td>
+    <button mat-button (click)="openDialog()">delete box</button>
+
+<table>
+<thead>
+  <tr>
+<th>FullName</th>
+<th>Age</th>
+<th>Email</th>
+<th>Birthday</th>
+<th>password</th>
+<th>gender</th>
+  </tr>
+</thead>
+<tbody>
+<tr *ngFor="let user of userDetails; let i = index">
+<td>{{user.fullName }}</td>
+<td>{{user.age}}</td>
+<td>{{user.email}}</td>
+<td>{{user.birthDate}}</td>
+<td>{{user.gnder}}</td>
+<td> <a [routerLink]="['/edituser',user.id]" >Edit</a></td>
+<td> <a [routerLink]="['/deletuser']" >Delet</a></td>
+<button mat-button (click)="openDialog(user.id)">delete user</button>
+
+  </tr>
+</tbody>
+
+</table>
+
+
