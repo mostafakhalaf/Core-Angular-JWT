@@ -1,0 +1,89 @@
+
+<!--
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(FullName.value,Age.value,Email.value,Birthday.value,Gender.value)">
+  
+ 
+    <label>Full Name</label>
+    <input  class="form-control"  #FullName name="FullName"  value={{userDetail.fullName}}>
+    <label class="text-danger" *ngIf="formModel.get('FullName').touched && formModel.get('FullName').errors?.required">This
+      Full Name is mandatory.</label>
+ 
+
+    <label>Age</label>
+    <input class="form-control" #Age formControlName="Age" ng-pattern="integerval"value={{userDetail.age}}>
+    <label class="text-danger" *ngIf="formModel.get('Age').touched &&formModel.get('Age').errors?.required">Invalid
+      Age address.</label>
+      
+      <label>Birthday</label>
+    <input class="form-control" #Birthday formControlName="Birthday" ng-pattern="integerval"value={{userDetail.birthDate}}>
+    <label class="text-danger" *ngIf="formModel.get('Birthday').touched &&formModel.get('Birthday').errors?.required">Invalid
+      Birthday.</label>
+
+      <label>gender</label>
+    <input class="form-control" #Gender formControlName="Gender" ng-pattern="integerval"value={{userDetail.gender}}>
+    <label class="text-danger" *ngIf="formModel.get('Age').touched &&formModel.get('Gender').errors?.required">Invalid
+      Gender.</label>
+ 
+    
+    <input  type="hidden" class="form-control" #Email name="Email" value={{userDetail.email}} required>
+  
+
+    
+  
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Login</button>
+    </div>
+  </div>
+</form>
+
+-->
+<form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit(FullName.value,Age.value,Email.value, Birthday.value,Gender.value,Password.value)">
+  <div class="form-group required">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input  class="form-control" formControlName="FullName" #FullName value={{userDetail?.fullName}}>
+      <label class="text-danger" *ngIf="service.formModel.get('FullName').touched && service.formModel.get('FullName').errors?.required">This
+        Full Name is mandatory.</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>Age</label>
+    <input class="form-control" formControlName="Age" #Age ng-pattern="integerval"value={{userDetail?.age}}>
+    <label class="text-danger" *ngIf="service.formModel.get('Age').touched && service.formModel.get('Age').errors?.required">Invalid
+      Age address.</label>
+      
+  </div>
+  <div class="form-group">
+    <label>Birthday</label>
+    <input class="form-control" formControlName="Birthday" #Birthday ng-pattern="integerval" value={{userDetail?.birthDate}}>
+    <label class="text-danger" *ngIf="service.formModel.get('Birthday').touched && service.formModel.get('Birthday').errors?.required">Invalid
+      Birthday mat-dialog-content.</label>
+      
+  </div>
+  <div class="form-group">
+    <label>gender</label>
+    <input class="form-control" formControlName="Gender" #Gender ng-pattern="integerval" value={{userDetail?.gender}} >
+    <label class="text-danger" *ngIf="service.formModel.get('Gender').touched && service.formModel.get('Gender').errors?.required">Invalid
+      Gender.</label>
+      
+  </div>
+  
+  
+    <input type="hidden" class="form-control" formControlName="Email"  #Email value={{userDetail?.email}}>
+    <input type="hidden" class="form-control" formControlName="Password"  #Password value={{userDetail?.password}}>
+
+
+  
+      
+      
+  
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block" >update User   </button>
+    </div>
+  </div>
+</form>
+[disabled]="!service.formModel.valid"
+
